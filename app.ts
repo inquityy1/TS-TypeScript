@@ -10,9 +10,21 @@
 //	}
 //}
 
+interface Greetable {
+	name: string;
+}
+
+interface Printable {
+	print(): void;
+}
+
 //     SHORTCUT
-class User {
+class User implements Greetable, Printable {
 	constructor(public name: string, private age: number) {}
+	
+	print() {
+		console.log(this.name);
+	}
 }
 //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -49,7 +61,12 @@ function printResult(result: string | number, printMode: OutputMode) {
 
 // printResult(result);
 
-type CalculationResults = { res: number, print: () => void }[];
+interface CalculationContainer {
+	res: number;
+	print(): void;
+}
+
+type CalculationResults = CalculationContainer[];
 
 const results: { res: number, print: () => void }[] = [];
 const names = ['Max'];
