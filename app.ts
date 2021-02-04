@@ -68,7 +68,7 @@ interface CalculationContainer {
 
 type CalculationResults = CalculationContainer[];
 
-const results: { res: number, print: () => void }[] = [];
+const results: Array<CalculationContainer> = [];
 const names = ['Max'];
 
 buttonElement.addEventListener('click', () => {
@@ -89,9 +89,12 @@ buttonElement.addEventListener('click', () => {
 // 	printResult(result, 'window'); not allowed
 });
 
+function logAndEcho<T>(val: T) {
+	console.log(val);
+	return val;
+}
 
-
-
+logAndEcho<string>('Hi there!').split(' ');
 
 
 
