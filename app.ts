@@ -6,18 +6,57 @@ function add(a: number, b: number) {
 	return a + b;
 }
 
-function printResult(result) {
-	console.log(result);
+type PrintMode = 'console' | 'alert';
+enum OutputMode { CONSOLE, ALERT };
+
+function printResult(result: string | number, printMode: OutputMode) {
+	if (printMode === OutputMode.CONSOLE) {
+		console.log(result);
+	} else if (printMode === OutputMode.ALERT) {
+		alert(result);
+	}	
 }
 
 // const result = add(5, 3);
 // let isDone = false;
 
-// console.log(result);
+// printResult(result);
+
+type CalculationResults = { res: number, print: () => void }[];
+
+const results: { res: number, print: () => void }[] = [];
+const names = ['Max'];
 
 buttonElement.addEventListener('click', () => {
 	const num1 = +num1Input.value;
 	const num2 = +num2Input.value;
 	const result = add(num1, num2);
-	printResult(result);
+	const resultContainer = {
+		res: result,
+		print() {
+			console.log(this.res);
+		}
+	};
+	results.push(resultContainer);
+//	results.push(5);
+//	results[0].print();
+	printResult(result, OutputMode.CONSOLE);
+	printResult(result, OutputMode.ALERT);
+// 	printResult(result, 'window'); not allowed
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
