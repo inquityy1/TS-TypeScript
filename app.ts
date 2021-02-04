@@ -1,3 +1,30 @@
+//     LONGER VERSION
+
+//class User {
+//	name: string;
+//	private age: number;
+	
+//	constructor(name: string, age: number) {
+//		this.name = name;
+//		this.age = age;
+//	}
+//}
+
+//     SHORTCUT
+class User {
+	constructor(public name: string, private age: number) {}
+}
+//^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+class Admin extends User {
+	constructor(name: string, age: number, private permissions: []) {
+		super(name, age);
+	}
+}
+
+const user = new User('Max', 30);
+console.log(user.name);
+
 const num1Input: HTMLInputElement = document.getElementById('num1') as HTMLInputElement;
 const num2Input = <HTMLInputElement>document.getElementById('num2');
 const buttonElement = document.querySelector('button');
